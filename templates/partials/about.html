@@ -1,31 +1,32 @@
+{% from "/macros/translation.html" import transbag %}
 	<section id="fh5co-about" data-section="about">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 section-heading text-center">
-					<h2 class="to-animate">{{ with .Site.Params.about.title }}{{ . | markdownify }}{{ end }}</h2>
+					<h2 class="to-animate">{{ transbag('about', this.alt, 'title') | markdown }}</h2>
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 subtext to-animate">
-							<h3>{{ with .Site.Params.about.description }}{{ . | markdownify }}{{ end }}</h3>
+							<h3>{{ transbag('about', this.alt, 'description') | markdown }}</h3>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-			{{ range .Site.Params.about.item }}
+			{% for member in site.query('/team', alt=this.alt) %}
 				<div class="col-md-4">
 					<div class="fh5co-person text-center to-animate">
-						<figure><img src="images/{{ .img }}" alt="{{ .alt }}"></figure>
-						<h3>{{ .name | markdownify }}</h3>
-						<span class="fh5co-position">{{ .position | markdownify }}</span>
-						<p>{{ .description | markdownify }}</p>
+						<figure><img src="{{ member.image | url }}" alt="{{ member.alt }}"></figure>
+						<h3>{{ member.name | markdown }}</h3>
+						<span class="fh5co-position">{{ member.position | markdown }}</span>
+						<p>{{ member.description | markdown }}</p>
 						<ul class="social social-circle">
-						{{ range .social }}
-							<li><a href="{{ index . 1 }}"><i class="{{ index .  0 }}"></i></a></li>
-						{{ end }}
+            {% for social in member.social_networks.blocks %}
+							<li><a href="{{ social.url }}"><i class="icon-{{ social.name }}"></i></a></li>
+						{% endfor %}
 						</ul>
 					</div>
 				</div>
-			{{ end }}
+			{% endfor %}
 			</div>
 		</div>
 	</section>

@@ -1,29 +1,30 @@
+{% from "/macros/translation.html" import transbag %}
 	<section id="fh5co-testimonials" data-section="testimonials">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 section-heading text-center">
-					<h2 class="to-animate">{{ with .Site.Params.testimonials.title }}{{ . | markdownify }}{{ end }}</h2>
+					<h2 class="to-animate">{{ transbag('testimonials', this.alt, 'title') | markdown }}</h2>
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 subtext to-animate">
-							<h3>{{ with .Site.Params.testimonials.description }}{{ . | markdownify }}{{ end }}</h3>
+							<h3>{{ transbag('testimonials', this.alt, 'description') | markdown }}</h3>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-			{{ range .Site.Params.testimonials.item }}
+			{% for testimony in site.query('/testimonials', alt=this.alt) %}
 				<div class="col-md-4">
 					<div class="box-testimony">
 						<blockquote class="to-animate-2">
-							<p>{{ .quote | markdownify}}</p>
+							<p>{{ testimony.quote | markdown}}</p>
 						</blockquote>
 						<div class="author to-animate">
-							<figure><img src="images/{{ .img }}" alt="{{ .alt }}"></figure>
-							<p>{{ .person | markdownify }}</p>
+							<figure><img src="{{ testimony.image | url }}" alt="{{ testimoniy.alt }}"></figure>
+							<p>{{ testimony.person | markdown }}</p>
 						</div>
 					</div>
 				</div>
-			{{ end }}
+			{% endfor %}
 			</div>
 		</div>
 	</section>

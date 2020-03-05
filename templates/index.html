@@ -4,44 +4,45 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html>
-    <head>
-        {{ partial "head.html" .}}
-    </head>
-    <body>
-        {{ partial "nav.html" .}}
+	<head>
+		{% include "partials/head.html" %}
+	</head>
+	<body>
+		{% include "partials/nav.html" %}
 
-		{{ partial "hero.html" .}}
-		
-        {{ partial "intro.html" .}}
+		{% include "partials/hero.html" %}
 
-		{{ if .Site.Params.work.enable }}
-       		{{ partial "work.html" .}}
-       	{{ end }}
+		{% include "partials/intro.html" %}
 
-		{{ if .Site.Params.testimonials.enable }}
-        	{{ partial "testimonials.html" .}}
-		{{ end }}
+		{% if config.THEME_SETTINGS.work == 'yes' %}
+			{% include "partials/work.html" %}
+		{% endif %}
 
-		{{ if .Site.Params.services.enable }}
-        	{{ partial "services.html" .}}
-		{{ end }}
+		{% if config.THEME_SETTINGS.testimonials == 'yes' %}
+			{% include "partials/testimonials.html" %}
+		{% endif %}
 
-		{{ if .Site.Params.about.enable }}
-        	{{ partial "about.html" .}}
-		{{ end }}
+		{% if config.THEME_SETTINGS.services == 'yes' %}
+			{% include "partials/services.html" %}
+		{% endif %}
 
-		{{ if .Site.Params.counters.enable }}
-        	{{ partial "counters.html" .}}
-        {{ end }}
+		{% if config.THEME_SETTINGS.about == 'yes' %}
+			{% include "partials/about.html" %}
+		{% endif %}
 
-		{{ if .Site.Params.contact.enable }}
-        	{{ partial "contact.html" .}}
-        {{ end }}
+		{% if config.THEME_SETTINGS.counters == 'yes' %}
+			{% include "partials/counters.html" %}
+		{% endif %}
 
-        {{ if .Site.Params.footer.enable }}
-        	{{ partial "footer.html" .}}
-        {{ end }}
+		{% if config.THEME_SETTINGS.contact == 'yes' %}
+			{% include "partials/contact.html" %}
+		{% endif %}
 
-        {{ partial "js.html" .}}
-    </body>
+		{% if config.THEME_SETTINGS.footer == 'yes' %}
+			{% include "partials/footer.html" %}
+		{% endif %}
+
+		{% include "partials/js.html" %}
+
+	</body>
 </html>

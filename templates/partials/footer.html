@@ -1,17 +1,18 @@
+{% from "/macros/translation.html" import transbag %}
 	<footer id="footer" role="contentinfo">
 		<a href="#" class="gotop js-gotop"><i class="icon-arrow-up2"></i></a>
 		<div class="container">
 			<div class="">
 				<div class="col-md-12 text-center">
-					<p>{{ with .Site.Params.footer.copyright }}{{ . | markdownify }}{{ end }}</p>
+					<p>{{ transbag('footer', this.alt, 'copyright') | markdown }}</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<ul class="social social-circle">
-					{{ range .Site.Params.footer.links }}
-						<li><a href="{{ with index . 1}}{{ . }}{{ end }}"><i class="{{ with index . 0}}{{ . }}{{ end }}"></i></a></li>
-					{{ end }}
+						<li><a href="https://facebook.com/{{ config.THEME_SETTINGS.facebook }}"><i class="icon-facebook"></i></a></li>
+						<li><a href="https://twitter.com/{{ config.THEME_SETTINGS.twitter }}"><i class="icon-twitter"></i></a></li>
+						<li><a href="https://youtube.com/{{ config.THEME_SETTINGS.youtube }}"><i class="icon-youtube"></i></a></li>
 					</ul>
 				</div>
 			</div>

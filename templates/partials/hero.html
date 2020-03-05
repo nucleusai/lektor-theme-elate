@@ -1,3 +1,4 @@
+{% from "/macros/translation.html" import transbag %}
 	<section id="fh5co-home" data-section="home" style="background-image: url(images/full_image_2.jpg);" data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
 		<div class="container">
@@ -5,8 +6,8 @@
 				<div class="text-inner">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h1 class="to-animate">{{ with .Site.Params.hero.title }}{{ . | markdownify }}{{ end }}</h1>
-							<h2 class="to-animate">{{ with .Site.Params.hero.subtitle }}{{ . | markdownify }}{{ end }}</h2>
+							<h1 class="to-animate">{{ transbag('hero', this.alt, 'title') | markdown }}</h1>
+							<h2 class="to-animate">{{ transbag('hero', this.alt, 'subtitle') | markdown }}</h2>
 						</div>
 					</div>
 				</div>

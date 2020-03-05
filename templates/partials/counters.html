@@ -1,21 +1,22 @@
-	<section id="fh5co-counters" style="background-image: url(images/{{ .Site.Params.counters.background }});" data-stellar-background-ratio="0.5">
+{% from "/macros/translation.html" import transbag %}
+	<section id="fh5co-counters" style="background-image: url({{ transbag('counters', this.alt, 'background_image') | url }});" data-stellar-background-ratio="0.5">
 		<div class="fh5co-overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 section-heading text-center to-animate">
-					<h2>{{ .Site.Params.counters.title | markdownify }}</h2>
+					<h2>{{ transbag('counters', this.alt, 'title') | markdown }}</h2>
 				</div>
 			</div>
 			<div class="row">
-			{{ range .Site.Params.counters.item }}
+			{% for counter in site.query('/counters', alt=this.alt) %}
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="fh5co-counter to-animate">
-						<i class="fh5co-counter-icon {{ .icon }} to-animate-2"></i>
-						<span class="fh5co-counter-number js-counter" data-from="{{ .from }}" data-to="{{ .to }}" data-speed="{{ .speed }}" data-refresh-interval="{{ .interval }}">{{ .to }}</span>
-						<span class="fh5co-counter-label">{{ .description }}</span>
+						<i class="fh5co-counter-icon {{ counter.icon }} to-animate-2"></i>
+						<span class="fh5co-counter-number js-counter" data-from="{{ counter.from }}" data-to="{{ counter.to }}" data-speed="{{ counter.speed }}" data-refresh-interval="{{ counter.interval }}">{{ counter.to }}</span>
+						<span class="fh5co-counter-label">{{ counter.description }}</span>
 					</div>
 				</div>
-			{{ end }}
+			{% endfor %}
 			</div>
 		</div>
 	</section>
