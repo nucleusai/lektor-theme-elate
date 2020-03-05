@@ -11,8 +11,10 @@ Inside the folder of your Lektor site run:
 
 Add the themes variable to the .lektorproject file
 
+```ini
 [project]
-themes = lektor-theme-nix
+themes = lektor-theme-elate
+```
 
 For more information read the official [setup guide](//www.getlektor.com/docs/themes/installing/) of Lektor.
 
@@ -54,6 +56,9 @@ In order to see your site in action, run Lektor's built-in local server.
 
 Now enter [`localhost:1313`](http://localhost:1313/) in the address bar of your browser.
 
+# Notes
+
+- It's missing extra (pre/post) menu entries
 
 ## Contributing
 
