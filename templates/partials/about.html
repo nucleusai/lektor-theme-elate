@@ -15,10 +15,10 @@
 			{% for member in site.query('/team', alt=this.alt) %}
 				<div class="col-md-4">
 					<div class="fh5co-person text-center to-animate">
-						<figure><img src="{{ member.image | url }}" alt="{{ member.alt }}"></figure>
-						<h3>{{ member.name | markdown }}</h3>
-						<span class="fh5co-position">{{ member.position | markdown }}</span>
-						<p>{{ member.description | markdown }}</p>
+						<figure><img src="{{ member.image }}" alt="{{ member.alt }}"></figure>
+						<h3>{{ member.name }}</h3>
+						<span class="fh5co-position">{{ member.position }}</span>
+						<p>{{ member.description }}</p>
 						<ul class="social social-circle">
             {% for social in member.social_networks.blocks %}
 							<li><a href="{{ social.url }}"><i class="icon-{{ social.name }}"></i></a></li>

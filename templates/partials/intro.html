@@ -3,11 +3,11 @@
 		<div class="container">
 			<div class="row row-bottom-padded-lg">
 			{% for item in site.query('/intro', alt=this.alt) %}
-				<div class="fh5co-block to-animate" style="background-image: url(images/{{ item.image | url }});">
+				<div class="fh5co-block to-animate" style="background-image: url(images/{{ "img/img_7.jpg" | asseturl }});">
 					<div class="overlay-darker"></div>
 					<div class="overlay"></div>
 					<div class="fh5co-text">
-						<i class="fh5co-intro-icon {{ item.icon }}"></i>
+						<i class="fh5co-intro-icon icon-{{ item.icon }}"></i>
 						<h2>{{ item.title }}</h2>
 						<p>{{ item.description }}</p>
 						{% if item.button %}
@@ -20,7 +20,7 @@
 			{% if config.THEME_SETTINGS.intro_video == 'yes' %}
 			<div class="row watch-video text-center to-animate">
 				<span>{{ transbag('intro_video', this.alt, 'title') | markdown }}</span>
-				<a href="{{ transbag('intro_video', this.alt, 'title') | markdown }}" class="popup-vimeo btn-video"><i class="{{ transbag('intro_video', this.alt, 'icon') | markdown }}"></i></a>
+				<a href="{{ transbag('intro_video', this.alt, 'url') }}" class="popup-vimeo btn-video"><i class="icon-play2"></i></a>
 			</div>
 			{% endif %}
 		</div>
