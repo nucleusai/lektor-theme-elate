@@ -10,9 +10,15 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<ul class="social social-circle">
-						<li><a href="https://facebook.com/{{ config.THEME_SETTINGS.facebook }}"><i class="icon-facebook"></i></a></li>
-						<li><a href="https://twitter.com/{{ config.THEME_SETTINGS.twitter }}"><i class="icon-twitter"></i></a></li>
-						<li><a href="https://youtube.com/{{ config.THEME_SETTINGS.youtube }}"><i class="icon-youtube"></i></a></li>
+            {% if config.THEME_SETTINGS.facebook %}
+				      <li><a href="https://facebook.com/{{ config.THEME_SETTINGS.facebook }}"><i class="icon-facebook"></i></a></li>
+            {% endif %}
+            {% if config.THEME_SETTINGS.twitter %}
+				      <li><a href="https://twitter.com/{{ config.THEME_SETTINGS.twitter }}"><i class="icon-twitter"></i></a></li>
+            {% endif %}
+            {% if config.THEME_SETTINGS.youtube %}
+				      <li><a href="https://youtube.com/{{ config.THEME_SETTINGS.youtube }}"><i class="icon-youtube"></i></a></li>
+            {% endif %}
 					</ul>
 				</div>
 			</div>

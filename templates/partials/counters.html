@@ -11,7 +11,7 @@
 			{% for counter in site.query('/counters', alt=this.alt) %}
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="fh5co-counter to-animate">
-						<i class="fh5co-counter-icon {{ counter.icon }} to-animate-2"></i>
+						<i class="fh5co-counter-icon icon-{{ counter.icon }} to-animate-2"></i>
 						<span class="fh5co-counter-number js-counter" data-from="{{ counter.from }}" data-to="{{ counter.to }}" data-speed="{{ counter.speed }}" data-refresh-interval="{{ counter.interval }}">{{ counter.to }}</span>
 						<span class="fh5co-counter-label">{{ counter.description }}</span>
 					</div>
